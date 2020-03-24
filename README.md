@@ -96,6 +96,8 @@ def contact(request):
 ```
 Reemplazar "nuestroEmail" por la dirección gmail a donde queramos recibir el correo. 
 
+Por último, agregamos una página para avisarle al usuario que el mensaje fue enviado con éxito. En nuestro caso, se llama `message_sent.html`.
+
 <hr>
  
 https://github.com/marianojhb/django_smtp_gmail
