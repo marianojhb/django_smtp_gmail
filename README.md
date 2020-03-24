@@ -41,7 +41,7 @@ Vamos a Gmail. En Configuración, vamos a Otras cuentas
 Dentro de la solapa "Cuentas e Importación". Cliqueamos en "Cambiar configuración de cuenta" cliqueamos en "Otras configuraciones de Cuenta Google"
 ![](OtherGoogleAccountSettings.png)
 
-Buscamos la opción "Seguridad":
+Buscamos la opción "Seguridad"
 ![](Security.png)
 
 Luego activamos la opción "Less Secure App Access" o su equivalente en español.
