@@ -60,14 +60,14 @@ Armamos el formulario de esta manera en `contact.html`:
 <form action="{% url 'contact' %}" method="post">
     <div>
         <label for="email_name">Su nombre: </label>
-        <input name="email_name" type="text" placeholder="Ingrese su nombre" size="30" autocomplete="off">
+        <input name="email_name" type="text" placeholder="Ingrese su nombre" size="30" autocomplete="off" autofocus>
     </div>
     <div>
         <label for="email_address">Su email:</label>
         <input name="email_address" type="email" placeholder="Su email" required autocomplete="off">
     </div>
         <label for="email_message">Mensaje</label>
-        <textarea name="email_message" type="textarea" required autocomplete="off"></textarea>
+        <textarea name="email_message" type="textarea" required></textarea>
     </div>
 </form>
 ```
