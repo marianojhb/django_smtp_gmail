@@ -76,31 +76,34 @@ Y en el backend, en `contact/views.py`:
 
 ```python
 from django.shortcuts import render
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 def contact(request):
     if request.method == 'POST':
         email_name = request.POST["email_name"]
         email_address = request.POST["email_address"]
         email_message = request.POST["email_message"]
-        send_mail(
+    
+        email = EmailMessage(
             subject="Consulta", 
-            message = f"{email_name} <{email_address}>\n{email_message}",
+            body = f"{email_name} <{email_address}>\n{email_message}",
             from_email = email_address,
-            recipient_list=['nuestroEmail'],
-            fail_silently=False,
+            to=['nuestroEmail'],
+            reply_to=[email_address]
         )
+        email.send(fail_silently=False)
         return render(request, 'contact/message_sent.html')
     return render(request, "contact/contact.html")
 ```
 Reemplazar "nuestroEmail" por la dirección gmail a donde queramos recibir el correo. 
 
-Observación. Por motivos de seguridad, los servidores de Gmail no permiten modificar la dirección de correo del remitente. La variable `from_email` sera entonces reemplazada por la configurada en `settings.txt` anteriormente.
+Observación. Por motivos de seguridad, los servidores de Gmail no permiten modificar la dirección de correo del remitente. La variable `from_email` sera entonces reemplazada por la configurada en `settings.txt` anteriormente. Sin embargo, la clase EmailMessage nos permite configurar un `reply_to` que usaremos para poder responder al remitente.
+
+Para mayor configuraciones que permiten la clase EmailMessage, sus métodos y propiedades, sugiero leer la documentación oficial (disponible solo en inglés al momento de este tutorial).
+> Ref: [Documentación oficial de Django](https://docs.djangoproject.com/en/3.0/topics/email/)
 
 Por último, agregamos una página para avisarle al usuario que el mensaje fue enviado con éxito. En nuestro caso, se llama `message_sent.html`.
 
-
-> Ref: [Documentación oficial de Django](https://docs.djangoproject.com/en/3.0/topics/email/)
 
 <hr>
  
